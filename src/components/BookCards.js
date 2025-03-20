@@ -1,64 +1,37 @@
+import { Button, Card, Link } from "@heroui/react";
+import React from "react";
 
-// "use client"
-
-// import BookData from "@/service/BookData"
-import { Button, Card, Divider, Link } from "@heroui/react"
-
-export default function BookCards({ book }) {
-
-
+const BookCard = ({ book }) => {
   return (
-    <>
-      <div className="sm:w-full sm:h-[100%]">
-        <div className="sm:w-full sm:h-[15%]">
-          <div className="sm:w-[96%] sm:h-[100%] m-5">
-            <Button className="sm:bg-[#cecdcd] pl-5 pr-5">
-              <Link href="/book" className="text-[#087E8B] font-bold">
-                All Book
-              </Link>
-            </Button>
-            <Divider className="my-4" />
-          </div>
+    <div className="w-[400px] h-[230px] relative">
+      <Card className="w-[150px] h-[230px] absolute left-3 bottom-5 z-10  shadow-xl">
+        <img
+          src={book.image}
+          alt={book.book_title}
+          className="w-full h-full object-cover rounded-lg"
+        />
+      </Card>
+      <div className="flex bg-[#dcdcdc] h-[100%] p-4 rounded-lg shadow-lg absolute top-12">
+
+
+        <div className="w-[150px]">
         </div>
 
-
-        <div className="flex  justify-around pl-5 pr-5">
-          <Card
-            className="w-[35vh] sm:h-[50vh] mt-12">
-            <Link className="group relative block">
-
-              <img
-                alt=""
-                src={book?.image}
-                className="absolute inset-0 object-cover transition-opacity group-hover:opacity-50"
-              />
-              <div className="justify-between absolute top-1 ml-1 z-10 size-10">
-                <Button
-                  className="text-xs text-[#087E8B] rounded-lg bg-white"
-                  color="#087E8B"
-                  size="sm"
-                >
-                  {/* <ArchiveBook size="15" color="#C81D25" /> */}
-                  {book.book_title}
-                </Button>
-              </div>
-
-              <div className=" p-4 sm:p-6 lg:p-8">
-                <div
-                  className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
-                >
-                  <h1 className="text-4xl font-bold text-center text-[#000000] pt-[50%]">
-                    {book.description}
-                  </h1>
-                </div>
-                {/* </div> */}
-              </div>
-            </Link>
-          </Card>
-
+        <div className="w-2/3 h-[90%] pl-6 flex flex-col justify-between">
+          <div className="h-[100%] ">
+            <h2 className="text-lg font-bold text-gray-900 line-clime-1">{book.book_title}</h2>
+            <p className="text-sm text-gray-700 mt-2 line-clamp-5">
+              {book.description}
+            </p>
+          </div>
+          <Button className="w-[150px] absolute left-3 bottom-5 rounded-3xl bg-blue-100 hover:bg-[#0B3954] transition">
+          <Link href={`/bookDetail/${book.id}`} className="text-[#0B3954] hover:text-white">Read Full Article</Link>
+        </Button>
 
         </div>
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};
+
+export default BookCard;

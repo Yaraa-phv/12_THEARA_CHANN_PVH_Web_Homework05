@@ -15,14 +15,10 @@ import Head from 'next/head';
 export default function SubLayout({ children }) {
   return (
     <>
-      <Head>
-        <body className="w-full h-screen bg-red-900" />
-      </Head>
-      {/* <html lang="en"> */}
-        <main className="w-full h-screen bg-red-900">
-          {children}
-        </main>
-      {/* </html> */}
+        <div className="bg-gray-200 w-full h-screen">
+      {/* <h1 className="text-2xl font-bold">Book Details</h1> */}
+      {children}
+    </div>
     </>
   );
 }
